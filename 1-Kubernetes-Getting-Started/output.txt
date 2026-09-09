@@ -1,0 +1,26 @@
+
+EXERCISE 1: HELLO POD - TERMINAL OUTPUT SNAPSHOT
+
+C:\Users\DELL\Devops> minikube start
+😄  minikube v1.32.0 on Microsoft Windows 11 Home
+✨  Using the docker driver based on existing profile
+👍  Starting control plane node minikube in cluster minikube
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace
+
+C:\Users\DELL\Devops> kubectl run hello-k8s --image=nginx --port=80
+pod/hello-k8s created
+
+C:\Users\DELL\Devops> kubectl get pods
+NAME        READY   STATUS    RESTARTS   AGE
+hello-k8s   1/1     Running   0          18s
+
+C:\Users\DELL\Devops> kubectl expose pod hello-k8s --type=NodePort --port=80
+service/hello-k8s exposed
+
+C:\Users\DELL\Devops> minikube service hello-k8s
+|-----------|-----------|-------------|---------------------------|
+| NAMESPACE |   NAME    | TARGET PORT |            URL            |
+|-----------|-----------|-------------|---------------------------|
+| default   | hello-k8s |          80 | http://192.168.49.2:31080 |
+|-----------|-----------|-------------|---------------------------|
+🎉  Opening service default/hello-k8s in default browser...
