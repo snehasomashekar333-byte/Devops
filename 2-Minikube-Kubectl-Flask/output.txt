@@ -1,0 +1,20 @@
+
+EXERCISE 2: MINIKUBE KUBECTL FLASK - OUTPUT LOG
+
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask> kubectl apply -f deployment.yaml
+deployment.apps/flask-app-deployment created
+service/flask-service created
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask> kubectl get deployments
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+flask-app-deployment   1/1     1            1           15s
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask> kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+flask-app-deployment-68b9f5799-7z4ql   1/1     Running   0          15s
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask> kubectl get services
+NAME            TYPE-     CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes      ClusterIP 10.96.0.1       <none>        443/TCP          2d
+flask-service   NodePort  10.105.14.212   <none>        5000:30001/TCP   15s
