@@ -1,34 +1,39 @@
 ﻿# Exercise 9: Python Multi-Stage Jenkins Pipeline
 ## Objective
-Build, test, deploy, run, and verify a Python Flask application using a Jenkins multi-stage pipeline.
-## Tools Used
-- Jenkins
-- Docker
+Build, test, deploy, run, and verify a Python Flask application using a multi-stage Jenkins pipeline.
+## Technologies Used
 - Python 3
 - Flask
+- Jenkins
 - Git and GitHub
-- PowerShell
+- Linux shell commands
 ## Application
 The Flask application responds to requests at `/` with:
 `Hello, Jenkins Multi-Stage Pipeline!`
 ## Pipeline Stages
-1. **Build:** Creates a Python virtual environment and installs dependencies from `requirements.txt`.
-2. **Test:** Runs unit tests using Python unittest.
-3. **Deploy:** Copies the application and test files into `python-app-deploy`.
-4. **Run Application:** Starts the Flask application in the background.
-5. **Test Application:** Checks the deployed HTTP endpoint and runs the unit tests again.
+1. **Build:** Creates a Python virtual environment and installs dependencies.
+2. **Test:** Runs automated unit tests.
+3. **Deploy:** Copies application files into `python-app-deploy`.
+4. **Run Application:** Starts the Flask application.
+5. **Test Application:** Checks the HTTP endpoint and reruns the unit tests.
 ## Project Files
 - `app.py`: Flask application.
 - `requirements.txt`: Python dependencies.
-- `test_app.py`: Unit tests.
+- `test_app.py`: Automated unit test.
 - `Jenkinsfile`: Defines the five pipeline stages.
-- `hello-world.sh`: Previous Jenkins Hello World exercise.
+- `hello-world.sh`: Jenkins Hello World shell script.
+- `screenshots/`: Exercise screenshots.
+## Local Testing
+The unit test was executed locally using Python 3.10.9.
+Result: **1 test passed.**
 ## Jenkins Configuration
-- Job: `Python-MultiStage-Pipeline`
-- Repository: https://github.com/snehasomashekar333-byte/Devops
-- Branch: `main`
+- Suggested job name: `Python-MultiStage-Pipeline`
 - Pipeline script: `Jenkinsfile`
-## Result
-The expected successful build status is `Finished: SUCCESS`.
+- Agent requirement: Linux environment with Python 3, pip, and curl.
+## Sample Code Attribution
+This exercise uses sample code from:
+https://github.com/rufiya06/devops-sample-code
+## Jenkins Build Status
+The Jenkins pipeline has not yet been independently verified in this repository.
 ## Screenshots
-Evidence for this exercise is stored in the `screenshots` folder.
+See the `screenshots` folder for the available exercise screenshots.
