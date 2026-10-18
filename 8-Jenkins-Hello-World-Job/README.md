@@ -1,4 +1,4 @@
-# Creating a Hello World Jenkins Job
+﻿# Creating a Hello World Jenkins Job
 
 ## 1. Objective
 
@@ -16,7 +16,7 @@ To create and execute a simple Jenkins Freestyle job that retrieves a shell scri
 
 A public GitHub repository named `devops-sample-code` was created to store the shell script.
 
-Repository URL: https://github.com/rufiya06/devops-sample-code
+Repository URL: https://github.com/snehasomashekar333-byte/devops-sample-code
 
 ## 4. Shell Script
 
@@ -46,7 +46,7 @@ Opened the Jenkins dashboard at `http://localhost:8080/`, selected **New Item**,
 ### Step 5: Configure Source Code Management
 Selected Git and configured the following repository:
 
-`https://github.com/rufiya06/devops-sample-code.git`
+`https://github.com/snehasomashekar333-byte/devops-sample-code.git`
 
 The branch was set to `*/main`. Since the repository is public, no repository credentials were required.
 
