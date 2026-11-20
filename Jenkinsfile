@@ -4,7 +4,7 @@
     stages {
         stage('Checkout') {
             steps {
-                echo 'Source code checked out successfully'
+                echo 'Code checked out from GitHub'
             }
         }
 
