@@ -21,6 +21,7 @@ pipeline {
             steps {
                 dir('11-Jenkins-Metrics-Exporter') {
                     sh './venv/bin/pytest -v'
+                    sh 'exit 1'
                 }
             }
         }
@@ -45,4 +46,5 @@ pipeline {
         }
     }
 }
+
 
