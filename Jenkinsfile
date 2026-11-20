@@ -30,7 +30,7 @@ pipeline {
                 dir('11-Jenkins-Metrics-Exporter') {
                     sh 'mkdir -p dist'
                     sh 'python3 -c "import zipfile; z=zipfile.ZipFile(\'dist/delivery-metrics.zip\', \'w\'); z.write(\'app.py\'); z.write(\'requirements.txt\'); z.close()"'
-                    archiveArtifacts artifacts: '11-Jenkins-Metrics-Exporter/dist/delivery-metrics.zip', fingerprint: true
+                    archiveArtifacts artifacts: 'dist/delivery-metrics.zip', fingerprint: true
                 }
             }
         }
@@ -45,3 +45,4 @@ pipeline {
         }
     }
 }
+
