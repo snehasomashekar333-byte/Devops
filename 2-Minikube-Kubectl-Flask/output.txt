@@ -1,0 +1,18 @@
+Microsoft Windows [Version 10.0.22631.3527]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask>kubectl apply -f deployment.yaml
+deployment.apps/flask-app created
+service/flask-app-service created
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask>kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+flask-app    1/1     1            1           12s
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask>kubectl get pods -l app=flask-app
+NAME                         READY   STATUS    RESTARTS   AGE
+flask-app-b8cd75b6f-tpdpr    1/1     Running   0          12s
+
+C:\Users\DELL\Devops\2-Minikube-Kubectl-Flask>minikube service flask-app-service --url
+http://127.0.0.1:36157
+❗  Because you are using a Docker driver on linux, the terminal needs to be open to run it.

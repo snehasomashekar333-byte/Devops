@@ -1,5 +1,18 @@
+<<<<<<< HEAD
 __pycache__/
 .pytest_cache/
 *.pyc
 venv/
 .env
+=======
+
+# Local backups
+backup-before-copy/
+# Python virtual environments
+.venv/
+**/.venv/
+# Python cache files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+>>>>>>> 4ac88e8c3abb01fb91f6df0b21d58ebb817481e0

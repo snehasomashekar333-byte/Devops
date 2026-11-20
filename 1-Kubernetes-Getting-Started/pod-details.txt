@@ -1,0 +1,52 @@
+Name:             hello-k8s
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Sun, 11 Oct 2026 13:20:33 +0530
+Labels:           run=hello-k8s
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.4
+IPs:
+  IP:  10.244.0.4
+Containers:
+  hello-k8s:
+    Container ID:   containerd://bf536eaacddf8e28a00c01e1ea62a77521ab1969dd5d5375ed7faed63312a19a
+    Image:          nginx
+    Image ID:       docker.io/library/nginx@sha256:f9ea18bfa4fad859e1ed38259d711da7ccad2c3516e875cec3351a57c859f571
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sun, 11 Oct 2026 13:22:16 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-ksz24 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-ksz24:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  34m   default-scheduler  Successfully assigned default/hello-k8s to minikube
+  Normal  Pulling    34m   kubelet            spec.containers{hello-k8s}: Pulling image "nginx"
+  Normal  Pulled     33m   kubelet            spec.containers{hello-k8s}: Successfully pulled image "nginx" in 1m41.778s (1m41.778s including waiting). Image size: 63873678 bytes.
+  Normal  Created    33m   kubelet            spec.containers{hello-k8s}: Container created
+  Normal  Started    33m   kubelet            spec.containers{hello-k8s}: Container started
