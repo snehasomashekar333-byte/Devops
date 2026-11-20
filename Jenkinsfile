@@ -2,6 +2,7 @@
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -11,21 +12,29 @@
 
         stage('Install Dependencies') {
             steps {
-                bat 'python -m pip install -r requirements.txt'
+                dir('11-Jenkins-Metrics-Exporter') {
+                    sh 'python3 -m pip install -r requirements.txt'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                bat 'python -m pytest -v'
+                dir('11-Jenkins-Metrics-Exporter') {
+                    sh 'python3 -m pytest -v'
+                }
             }
         }
 
         stage('Package') {
             steps {
-                bat 'if not exist dist mkdir dist'
-                powershell 'Compress-Archive -Path app.py,requirements.txt -DestinationPath dist\\delivery-metrics.zip -Force'
-                archiveArtifacts artifacts: 'dist/delivery-metrics.zip', fingerprint: true
+                dir('11-Jenkins-Metrics-Exporter') {
+                    sh '''
+                    mkdir -p dist
+                    python3 -c "import zipfile; z=zipfile.ZipFile('dist/delivery-metrics.zip','w'); z.write('app.py'); z.write('requirements.txt'); z.close()"
+                    '''
+                    archiveArtifacts artifacts: '11-Jenkins-Metrics-Exporter/dist/delivery-metrics.zip', fingerprint: true
+                }
             }
         }
     }
