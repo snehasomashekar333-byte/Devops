@@ -1,11 +1,9 @@
-pipeline {
+﻿pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
-                checkout scm
                 echo 'Source code checked out successfully'
             }
         }
@@ -13,7 +11,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('11-Jenkins-Metrics-Exporter') {
-                    sh 'python3 -m pip install -r requirements.txt'
+                    sh 'python3 -m venv venv'
+                    sh './venv/bin/pip install -r requirements.txt'
                 }
             }
         }
@@ -21,7 +20,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('11-Jenkins-Metrics-Exporter') {
-                    sh 'python3 -m pytest -v'
+                    sh './venv/bin/pytest -v'
                 }
             }
         }
@@ -29,10 +28,8 @@ pipeline {
         stage('Package') {
             steps {
                 dir('11-Jenkins-Metrics-Exporter') {
-                    sh '''
-                    mkdir -p dist
-                    python3 -c "import zipfile; z=zipfile.ZipFile('dist/delivery-metrics.zip','w'); z.write('app.py'); z.write('requirements.txt'); z.close()"
-                    '''
+                    sh 'mkdir -p dist'
+                    sh 'python3 -c "import zipfile; z=zipfile.ZipFile(\'dist/delivery-metrics.zip\', \'w\'); z.write(\'app.py\'); z.write(\'requirements.txt\'); z.close()"'
                     archiveArtifacts artifacts: '11-Jenkins-Metrics-Exporter/dist/delivery-metrics.zip', fingerprint: true
                 }
             }
